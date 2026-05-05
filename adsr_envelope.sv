@@ -1,0 +1,123 @@
+module adsr_envelope (
+    input logic clk,
+    input logic rst,
+    input logic gate_v1,
+    input logic sample_enable,
+    input logic signed [15:0] mixed_sound,
+    output logic signed [15:0] shaped_sound
+);
+
+    // FSM Durumları
+    typedef enum logic[2:0]{
+        zero       = 3'b000,
+        attack     = 3'b001, 
+        decay      = 3'b010,
+        sustain    = 3'b011,
+        release_st = 3'b100
+    } adsr_fsm;
+
+    // Q0.32 formatında katsayılar
+    localparam logic [31:0] ATTACK_COEF  = 32'd4_280_000_000; // Üstel artış hızı katsayısı (örnektir, ayarlanabilir)
+    localparam logic [31:0] DECAY_COEF   = 32'd4_294_797_183;
+    localparam logic [31:0] RELEASE_COEF = 32'd4_230_189_873;
+
+    localparam logic [31:0] ONE          = 32'hFFFF_FFFF;
+    localparam logic [31:0] DOT5         = 32'd2_147_483_648;
+    localparam logic [31:0] EPSILON      = 32'd1_000_000; 
+    localparam logic [31:0] ATTACK_TARGET = ONE - EPSILON; // Asimptota yaklaşırken state değiştirmek için
+
+    logic [31:0] envelope;
+    adsr_fsm next_state, current_state;
+
+    // --- DSP Paylaşımı ve Kombinasyonel Çarpıcı Mantığı ---
+    logic [31:0] mult_in_a;
+    logic [31:0] mult_in_b;
+    logic [63:0] shared_mult;
+
+    always_comb begin
+        // A Girişi (MUX): Attack için (1 - E[n-1]), decay ve release için E[n-1]
+        if (current_state == attack)
+            mult_in_a = ONE - envelope;
+        else
+            mult_in_a = envelope;
+
+        // B Girişi (MUX): Katsayı seçimi
+        unique case(current_state)
+            attack:  mult_in_b = ATTACK_COEF;
+            decay:   mult_in_b = DECAY_COEF;
+            default: mult_in_b = RELEASE_COEF; // release_st ve diğer durumlar için
+        endcase
+            
+        // Tek bir donanımsal çarpıcı (DSP bloğu)
+        shared_mult = {32'd0, mult_in_a} * mult_in_b;
+    end
+    // ------------------------------------------------------
+
+    // 1. Senkron Blok
+    always_ff @(posedge clk or posedge rst) begin
+        if(rst) begin
+            current_state <= zero;
+            envelope <= 32'b0;
+        end else begin
+            current_state <= next_state;
+            if (current_state == zero) begin
+                envelope <= 32'b0;
+            end 
+            else if (sample_enable) begin    
+                unique case(current_state)
+                    attack: begin
+                        // Hedef olan ONE değerinden formül sonucunu çıkar
+                        envelope <= ONE - shared_mult[63:32];
+                    end
+                    decay: begin
+                        envelope <= shared_mult[63:32];
+                    end
+                    sustain: begin
+                        envelope <= envelope;
+                    end
+                    release_st: begin
+                        envelope <= shared_mult[63:32];
+                    end
+                    default: envelope <= envelope;
+                endcase
+            end
+        end
+    end
+    
+    // 2. Kombinasyonel Blok: FSM State Geçiş Mantığı
+    always_comb begin
+        next_state = current_state;
+        unique case(current_state)
+            zero: begin
+                if(gate_v1) next_state = attack;
+            end
+            attack: begin
+                if(!gate_v1) next_state = release_st;
+                // Asimptotta takılmaması için ATTACK_TARGET eşiğini kullandık
+                else if(envelope >= ATTACK_TARGET) next_state = decay;
+            end
+            decay: begin
+                if(!gate_v1) next_state = release_st;
+                else if(envelope <= DOT5) next_state = sustain;
+            end
+            sustain: begin
+                if(!gate_v1) next_state = release_st;
+            end
+            release_st: begin
+                if(gate_v1) next_state = attack;
+                else if(envelope <= EPSILON) next_state = zero;
+            end
+            default: next_state = zero;
+        endcase
+    end
+
+    // 3. Çıkış Sesi Hesaplaması (Combinational)
+    logic signed [48:0] audio_mult;
+    
+    always_comb begin
+        // mixed_sound ve envelope çarpılır
+        audio_mult = mixed_sound * $signed({1'b0, envelope});
+        shaped_sound = audio_mult[47:32];
+    end
+
+endmodule
