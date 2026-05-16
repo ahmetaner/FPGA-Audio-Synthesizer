@@ -1,0 +1,50 @@
+
+State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|phase
+Name phase.00 phase.10 phase.01 
+phase.00 0 0 0 
+phase.01 1 0 1 
+phase.10 1 1 0 
+
+State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state
+Name state.NEXT_REG state.STOP_B state.STOP_A state.ACK state.SEND state.START_B state.START_A state.IDLE state.DONE 
+state.IDLE 0 0 0 0 0 0 0 0 0 
+state.START_A 0 0 0 0 0 0 1 1 0 
+state.START_B 0 0 0 0 0 1 0 1 0 
+state.SEND 0 0 0 0 1 0 0 1 0 
+state.ACK 0 0 0 1 0 0 0 1 0 
+state.STOP_A 0 0 1 0 0 0 0 1 0 
+state.STOP_B 0 1 0 0 0 0 0 1 0 
+state.NEXT_REG 1 0 0 0 0 0 0 1 0 
+state.DONE 0 0 0 0 0 0 0 1 1 
+
+State Machine - |synthesizer_top|adsr_envelope:u_adsr4|current_state
+Name current_state.sustain current_state.decay current_state.attack current_state.zero current_state.release_st 
+current_state.zero 0 0 0 0 0 
+current_state.attack 0 0 1 1 0 
+current_state.decay 0 1 0 1 0 
+current_state.sustain 1 0 0 1 0 
+current_state.release_st 0 0 0 1 1 
+
+State Machine - |synthesizer_top|adsr_envelope:u_adsr3|current_state
+Name current_state.sustain current_state.decay current_state.attack current_state.zero current_state.release_st 
+current_state.zero 0 0 0 0 0 
+current_state.attack 0 0 1 1 0 
+current_state.decay 0 1 0 1 0 
+current_state.sustain 1 0 0 1 0 
+current_state.release_st 0 0 0 1 1 
+
+State Machine - |synthesizer_top|adsr_envelope:u_adsr2|current_state
+Name current_state.sustain current_state.decay current_state.attack current_state.zero current_state.release_st 
+current_state.zero 0 0 0 0 0 
+current_state.attack 0 0 1 1 0 
+current_state.decay 0 1 0 1 0 
+current_state.sustain 1 0 0 1 0 
+current_state.release_st 0 0 0 1 1 
+
+State Machine - |synthesizer_top|adsr_envelope:u_adsr1|current_state
+Name current_state.sustain current_state.decay current_state.attack current_state.zero current_state.release_st 
+current_state.zero 0 0 0 0 0 
+current_state.attack 0 0 1 1 0 
+current_state.decay 0 1 0 1 0 
+current_state.sustain 1 0 0 1 0 
+current_state.release_st 0 0 0 1 1 

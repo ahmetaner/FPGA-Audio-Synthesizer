@@ -1,0 +1,1566 @@
+Analysis & Synthesis report for synthesizer
+Fri May 15 17:00:02 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. Analysis & Synthesis IP Cores Summary
+ 11. State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|phase
+ 12. State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state
+ 13. State Machine - |synthesizer_top|adsr_envelope:u_adsr4|current_state
+ 14. State Machine - |synthesizer_top|adsr_envelope:u_adsr3|current_state
+ 15. State Machine - |synthesizer_top|adsr_envelope:u_adsr2|current_state
+ 16. State Machine - |synthesizer_top|adsr_envelope:u_adsr1|current_state
+ 17. Registers Removed During Synthesis
+ 18. General Register Statistics
+ 19. Inverted Register Statistics
+ 20. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 21. Source assignments for voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated
+ 22. Source assignments for voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated
+ 23. Source assignments for voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated
+ 24. Source assignments for voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated
+ 25. Parameter Settings for User Entity Instance: counter_module:u_counter
+ 26. Parameter Settings for User Entity Instance: voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component
+ 27. Parameter Settings for User Entity Instance: voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component
+ 28. Parameter Settings for User Entity Instance: voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component
+ 29. Parameter Settings for User Entity Instance: voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component
+ 30. Parameter Settings for User Entity Instance: iir_lowpass_filter:u_lpf
+ 31. Parameter Settings for User Entity Instance: synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i
+ 32. altsyncram Parameter Settings by Entity Instance
+ 33. Port Connectivity Checks: "counter_module:u_counter"
+ 34. Post-Synthesis Netlist Statistics for Top Partition
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
+ 37. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri May 15 17:00:02 2026           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; synthesizer                                     ;
+; Top-level Entity Name           ; synthesizer_top                                 ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 678                                             ;
+; Total pins                      ; 14                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 262,144                                         ;
+; Total DSP Blocks                ; 24                                              ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 1                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; synthesizer_top    ; synthesizer        ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+-----------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library   ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+-----------+
+; synthesizer_top.sv               ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/synthesizer_top.sv                                     ;           ;
+; synthesizer_sound_interface.sv   ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/synthesizer_sound_interface.sv                         ;           ;
+; i2s_transmitter.sv               ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/i2s_transmitter.sv                                     ;           ;
+; i2c_config.sv                    ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/i2c_config.sv                                          ;           ;
+; ps2_receiver.sv                  ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/ps2_receiver.sv                                        ;           ;
+; scan_code_to_bus.sv              ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/scan_code_to_bus.sv                                    ;           ;
+; voice_allocator.sv               ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/voice_allocator.sv                                     ;           ;
+; voice_module.sv                  ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/voice_module.sv                                        ;           ;
+; oscillator.sv                    ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/oscillator.sv                                          ;           ;
+; adsr_envelope.sv                 ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/adsr_envelope.sv                                       ;           ;
+; digital_mixer.sv                 ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/digital_mixer.sv                                       ;           ;
+; iir_lowpass_filter.sv            ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/iir_lowpass_filter.sv                                  ;           ;
+; counter_module.sv                ; yes             ; User SystemVerilog HDL File            ; C:/ELE432/synthesizer/counter_module.sv                                      ;           ;
+; sine_rom.v                       ; yes             ; User Wizard-Generated File             ; C:/ELE432/synthesizer/sine_rom.v                                             ;           ;
+; audio_pll.v                      ; yes             ; User Wizard-Generated File             ; C:/ELE432/synthesizer/audio_pll.v                                            ; audio_pll ;
+; audio_pll/audio_pll_0002.v       ; yes             ; User Verilog HDL File                  ; C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v                             ; audio_pll ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;           ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;           ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;           ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc        ;           ;
+; aglobal251.inc                   ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc        ;           ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc         ;           ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc            ;           ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc            ;           ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc          ;           ;
+; db/altsyncram_1tf1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/ELE432/synthesizer/db/altsyncram_1tf1.tdf                                 ;           ;
+; sine_wave.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/ELE432/synthesizer/sine_wave.mif                                          ;           ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altera_pll.v          ;           ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+-----------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 807            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 1391           ;
+;     -- 7 input functions                    ; 5              ;
+;     -- 6 input functions                    ; 175            ;
+;     -- 5 input functions                    ; 126            ;
+;     -- 4 input functions                    ; 96             ;
+;     -- <=3 input functions                  ; 989            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 678            ;
+;                                             ;                ;
+; I/O pins                                    ; 14             ;
+; Total MLAB memory bits                      ; 0              ;
+; Total block memory bits                     ; 262144         ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 24             ;
+;                                             ;                ;
+; Total PLLs                                  ; 1              ;
+;     -- PLLs                                 ; 1              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 701            ;
+; Total fan-out                               ; 9015           ;
+; Average fan-out                             ; 4.12           ;
++---------------------------------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                      ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                 ; Entity Name                 ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+; |synthesizer_top                             ; 1391 (12)           ; 678 (9)                   ; 262144            ; 24         ; 14   ; 0            ; |synthesizer_top                                                                                                                    ; synthesizer_top             ; work         ;
+;    |adsr_envelope:u_adsr1|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr1                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr2|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr2                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr3|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr3                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr4|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr4                                                                                              ; adsr_envelope               ; work         ;
+;    |counter_module:u_counter|                ; 34 (34)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|counter_module:u_counter                                                                                           ; counter_module              ; work         ;
+;    |digital_mixer:u_mixer|                   ; 52 (52)             ; 66 (66)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|digital_mixer:u_mixer                                                                                              ; digital_mixer               ; work         ;
+;    |iir_lowpass_filter:u_lpf|                ; 63 (63)             ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|iir_lowpass_filter:u_lpf                                                                                           ; iir_lowpass_filter          ; work         ;
+;    |ps2_receiver:u_ps2|                      ; 9 (9)               ; 27 (27)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|ps2_receiver:u_ps2                                                                                                 ; ps2_receiver                ; work         ;
+;    |scan_code_to_bus:u_scan|                 ; 29 (29)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|scan_code_to_bus:u_scan                                                                                            ; scan_code_to_bus            ; work         ;
+;    |synthesizer_sound_interface:u_audio|     ; 69 (1)              ; 75 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio                                                                                ; synthesizer_sound_interface ; work         ;
+;       |audio_pll:audio_pll_inst|             ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst                                                       ; audio_pll                   ; audio_pll    ;
+;          |audio_pll_0002:audio_pll_inst|     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst                         ; audio_pll_0002              ; audio_pll    ;
+;             |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i ; altera_pll                  ; work         ;
+;       |i2c_config:i2c_inst|                  ; 57 (57)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst                                                            ; i2c_config                  ; work         ;
+;       |i2s_transmitter:i2s_inst|             ; 11 (11)             ; 42 (42)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2s_transmitter:i2s_inst                                                       ; i2s_transmitter             ; work         ;
+;    |voice_allocator:u_alloc|                 ; 255 (255)           ; 132 (132)                 ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|voice_allocator:u_alloc                                                                                            ; voice_allocator             ; work         ;
+;    |voice_module:u_voice1|                   ; 48 (0)              ; 32 (0)                    ; 65536             ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1                                                                                              ; voice_module                ; work         ;
+;       |oscillator:osc_inst|                  ; 48 (48)             ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|oscillator:osc_inst                                                                          ; oscillator                  ; work         ;
+;       |sine_rom:sine_rom_inst|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|sine_rom:sine_rom_inst                                                                       ; sine_rom                    ; work         ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component                                       ; altsyncram                  ; work         ;
+;             |altsyncram_1tf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated        ; altsyncram_1tf1             ; work         ;
+;    |voice_module:u_voice2|                   ; 48 (0)              ; 32 (0)                    ; 65536             ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice2                                                                                              ; voice_module                ; work         ;
+;       |oscillator:osc_inst|                  ; 48 (48)             ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice2|oscillator:osc_inst                                                                          ; oscillator                  ; work         ;
+;       |sine_rom:sine_rom_inst|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice2|sine_rom:sine_rom_inst                                                                       ; sine_rom                    ; work         ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component                                       ; altsyncram                  ; work         ;
+;             |altsyncram_1tf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated        ; altsyncram_1tf1             ; work         ;
+;    |voice_module:u_voice3|                   ; 48 (0)              ; 32 (0)                    ; 65536             ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice3                                                                                              ; voice_module                ; work         ;
+;       |oscillator:osc_inst|                  ; 48 (48)             ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice3|oscillator:osc_inst                                                                          ; oscillator                  ; work         ;
+;       |sine_rom:sine_rom_inst|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice3|sine_rom:sine_rom_inst                                                                       ; sine_rom                    ; work         ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component                                       ; altsyncram                  ; work         ;
+;             |altsyncram_1tf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated        ; altsyncram_1tf1             ; work         ;
+;    |voice_module:u_voice4|                   ; 48 (0)              ; 32 (0)                    ; 65536             ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice4                                                                                              ; voice_module                ; work         ;
+;       |oscillator:osc_inst|                  ; 48 (48)             ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice4|oscillator:osc_inst                                                                          ; oscillator                  ; work         ;
+;       |sine_rom:sine_rom_inst|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice4|sine_rom:sine_rom_inst                                                                       ; sine_rom                    ; work         ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component                                       ; altsyncram                  ; work         ;
+;             |altsyncram_1tf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated        ; altsyncram_1tf1             ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                         ;
++------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------+
+; Name                                                                                                                   ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF           ;
++------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------+
+; voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 16           ; --           ; --           ; 65536 ; sine_wave.mif ;
+; voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 16           ; --           ; --           ; 65536 ; sine_wave.mif ;
+; voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 16           ; --           ; --           ; 65536 ; sine_wave.mif ;
+; voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 16           ; --           ; --           ; 65536 ; sine_wave.mif ;
++------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------+
+
+
++-------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary    ;
++-----------------------------------+-------------+
+; Statistic                         ; Number Used ;
++-----------------------------------+-------------+
+; Two Independent 18x18             ; 20          ;
+; Sum of two 18x18                  ; 4           ;
+; Total number of DSP blocks        ; 24          ;
+;                                   ;             ;
+; Fixed Point Unsigned Multiplier   ; 20          ;
+; Fixed Point Mixed Sign Multiplier ; 8           ;
++-----------------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                           ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                               ; IP Include File ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------+-----------------+
+; Altera ; altera_pll   ; 25.1    ; N/A          ; N/A          ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst ; audio_pll.v     ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|phase ;
++----------+----------+----------+---------------------------------------------------------------+
+; Name     ; phase.00 ; phase.10 ; phase.01                                                      ;
++----------+----------+----------+---------------------------------------------------------------+
+; phase.00 ; 0        ; 0        ; 0                                                             ;
+; phase.01 ; 1        ; 0        ; 1                                                             ;
+; phase.10 ; 1        ; 1        ; 0                                                             ;
++----------+----------+----------+---------------------------------------------------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state                                                   ;
++----------------+----------------+--------------+--------------+-----------+------------+---------------+---------------+------------+------------+
+; Name           ; state.NEXT_REG ; state.STOP_B ; state.STOP_A ; state.ACK ; state.SEND ; state.START_B ; state.START_A ; state.IDLE ; state.DONE ;
++----------------+----------------+--------------+--------------+-----------+------------+---------------+---------------+------------+------------+
+; state.IDLE     ; 0              ; 0            ; 0            ; 0         ; 0          ; 0             ; 0             ; 0          ; 0          ;
+; state.START_A  ; 0              ; 0            ; 0            ; 0         ; 0          ; 0             ; 1             ; 1          ; 0          ;
+; state.START_B  ; 0              ; 0            ; 0            ; 0         ; 0          ; 1             ; 0             ; 1          ; 0          ;
+; state.SEND     ; 0              ; 0            ; 0            ; 0         ; 1          ; 0             ; 0             ; 1          ; 0          ;
+; state.ACK      ; 0              ; 0            ; 0            ; 1         ; 0          ; 0             ; 0             ; 1          ; 0          ;
+; state.STOP_A   ; 0              ; 0            ; 1            ; 0         ; 0          ; 0             ; 0             ; 1          ; 0          ;
+; state.STOP_B   ; 0              ; 1            ; 0            ; 0         ; 0          ; 0             ; 0             ; 1          ; 0          ;
+; state.NEXT_REG ; 1              ; 0            ; 0            ; 0         ; 0          ; 0             ; 0             ; 1          ; 0          ;
+; state.DONE     ; 0              ; 0            ; 0            ; 0         ; 0          ; 0             ; 0             ; 1          ; 1          ;
++----------------+----------------+--------------+--------------+-----------+------------+---------------+---------------+------------+------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|adsr_envelope:u_adsr4|current_state                                                                          ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; Name                     ; current_state.sustain ; current_state.decay ; current_state.attack ; current_state.zero ; current_state.release_st ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; current_state.zero       ; 0                     ; 0                   ; 0                    ; 0                  ; 0                        ;
+; current_state.attack     ; 0                     ; 0                   ; 1                    ; 1                  ; 0                        ;
+; current_state.decay      ; 0                     ; 1                   ; 0                    ; 1                  ; 0                        ;
+; current_state.sustain    ; 1                     ; 0                   ; 0                    ; 1                  ; 0                        ;
+; current_state.release_st ; 0                     ; 0                   ; 0                    ; 1                  ; 1                        ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|adsr_envelope:u_adsr3|current_state                                                                          ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; Name                     ; current_state.sustain ; current_state.decay ; current_state.attack ; current_state.zero ; current_state.release_st ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; current_state.zero       ; 0                     ; 0                   ; 0                    ; 0                  ; 0                        ;
+; current_state.attack     ; 0                     ; 0                   ; 1                    ; 1                  ; 0                        ;
+; current_state.decay      ; 0                     ; 1                   ; 0                    ; 1                  ; 0                        ;
+; current_state.sustain    ; 1                     ; 0                   ; 0                    ; 1                  ; 0                        ;
+; current_state.release_st ; 0                     ; 0                   ; 0                    ; 1                  ; 1                        ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|adsr_envelope:u_adsr2|current_state                                                                          ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; Name                     ; current_state.sustain ; current_state.decay ; current_state.attack ; current_state.zero ; current_state.release_st ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; current_state.zero       ; 0                     ; 0                   ; 0                    ; 0                  ; 0                        ;
+; current_state.attack     ; 0                     ; 0                   ; 1                    ; 1                  ; 0                        ;
+; current_state.decay      ; 0                     ; 1                   ; 0                    ; 1                  ; 0                        ;
+; current_state.sustain    ; 1                     ; 0                   ; 0                    ; 1                  ; 0                        ;
+; current_state.release_st ; 0                     ; 0                   ; 0                    ; 1                  ; 1                        ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |synthesizer_top|adsr_envelope:u_adsr1|current_state                                                                          ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; Name                     ; current_state.sustain ; current_state.decay ; current_state.attack ; current_state.zero ; current_state.release_st ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+; current_state.zero       ; 0                     ; 0                   ; 0                    ; 0                  ; 0                        ;
+; current_state.attack     ; 0                     ; 0                   ; 1                    ; 1                  ; 0                        ;
+; current_state.decay      ; 0                     ; 1                   ; 0                    ; 1                  ; 0                        ;
+; current_state.sustain    ; 1                     ; 0                   ; 0                    ; 1                  ; 0                        ;
+; current_state.release_st ; 0                     ; 0                   ; 0                    ; 1                  ; 1                        ;
++--------------------------+-----------------------+---------------------+----------------------+--------------------+--------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++-------------------------------------------------------------------------+-------------------------------------------------+
+; Register name                                                           ; Reason for Removal                              ;
++-------------------------------------------------------------------------+-------------------------------------------------+
+; voice_allocator:u_alloc|FREQ_V1[9..14]                                  ; Merged with voice_allocator:u_alloc|FREQ_V1[15] ;
+; voice_allocator:u_alloc|FREQ_V4[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V4[10] ;
+; voice_allocator:u_alloc|FREQ_V3[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V3[10] ;
+; voice_allocator:u_alloc|FREQ_V2[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V2[10] ;
+; voice_allocator:u_alloc|FREQ_V1[15]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V2[10]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V3[10]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V4[10]                                     ; Stuck at GND due to stuck port data_in          ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~14        ; Lost fanout                                     ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~15        ; Lost fanout                                     ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~16        ; Lost fanout                                     ;
+; adsr_envelope:u_adsr4|current_state~4                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr4|current_state~5                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr3|current_state~4                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr3|current_state~5                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr2|current_state~4                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr2|current_state~5                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr1|current_state~4                                   ; Lost fanout                                     ;
+; adsr_envelope:u_adsr1|current_state~5                                   ; Lost fanout                                     ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~0    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~1    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~2    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~3    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~4    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~5    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~6    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~7    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~8    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~9    ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~10   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~11   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~12   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~13   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~14   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~15   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~16   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~17   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~18   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~19   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~20   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~21   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~22   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~23   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~24   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~25   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~26   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~27   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~28   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~29   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~30   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~31   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~32   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~33   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~34   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~35   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~36   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~37   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~38   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~39   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~40   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~41   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~42   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~43   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~44   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~45   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~46   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~47   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~48   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~49   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~50   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~51   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~52   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~53   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~54   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~55   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~56   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~57   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~58   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~59   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~60   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~61   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~62   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~63   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~64   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~65   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~66   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~67   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~68   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~69   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~70   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~71   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~72   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~73   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~74   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~75   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~76   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~77   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~78   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~79   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~80   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~81   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~82   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~83   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~84   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~85   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~86   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~87   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~88   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~89   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~90   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~91   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~92   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~93   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~94   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~95   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~96   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~97   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~98   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~99   ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~100  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~101  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~102  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~103  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~104  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~105  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~106  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~107  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~108  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~109  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~110  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~111  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~112  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~113  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~114  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~115  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~116  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~117  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~118  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~119  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~120  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~121  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~122  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~123  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~124  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~125  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~126  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~127  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~128  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~129  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~130  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~131  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~132  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~133  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~134  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~135  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~136  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~137  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~138  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~139  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~140  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~141  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~142  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~143  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~144  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~145  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~146  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~147  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~148  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~149  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~150  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~151  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~152  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~153  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~154  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~155  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~156  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~157  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~158  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~159  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~160  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~161  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~162  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~163  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~164  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~165  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~166  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~167  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~168  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~169  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~170  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~171  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~172  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~173  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~174  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~175  ; Stuck at GND due to stuck port clock            ;
+; synthesizer_sound_interface:u_audio|i2s_transmitter:i2s_inst|bit_cnt[5] ; Stuck at GND due to stuck port data_in          ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[3]    ; Stuck at GND due to stuck port data_in          ;
+; Total Number of Removed Registers = 217                                 ;                                                 ;
++-------------------------------------------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 678   ;
+; Number of registers using Synchronous Clear  ; 224   ;
+; Number of registers using Synchronous Load   ; 41    ;
+; Number of registers using Asynchronous Clear ; 669   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 565   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                   ;
++----------------------------------------------------------------------+---------+
+; Inverted Register                                                    ; Fan out ;
++----------------------------------------------------------------------+---------+
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|i2c_sclk     ; 2       ;
+; voice_allocator:u_alloc|note_channel[0][3]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[0][2]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[1][3]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[1][2]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[2][3]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[2][2]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[3][3]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[3][2]                           ; 2       ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[2] ; 3       ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[1] ; 5       ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[0] ; 7       ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|sdat_out     ; 2       ;
+; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|sdat_oe      ; 2       ;
+; ps2_receiver:u_ps2|ps2_clk_sync[2]                                   ; 1       ;
+; ps2_receiver:u_ps2|ps2_clk_sync[1]                                   ; 2       ;
+; ps2_receiver:u_ps2|ps2_clk_sync[0]                                   ; 1       ;
+; ps2_receiver:u_ps2|ps2_dat_sync[1]                                   ; 1       ;
+; ps2_receiver:u_ps2|ps2_dat_sync[0]                                   ; 1       ;
+; Total number of inverted registers = 19                              ;         ;
++----------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[0][0]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[1][1]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[2][1]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[3][0]                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |synthesizer_top|rst_cnt[2]                                                           ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[3][9]                               ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[0][0]                               ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[1][15]                              ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[2][4]                               ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr4|envelope[20]                                   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr3|envelope[11]                                   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr2|envelope[19]                                   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr1|envelope[10]                                   ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 4 LEs                ; 336 LEs                ; Yes        ; |synthesizer_top|scan_code_to_bus:u_scan|waveform_select[0]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[0][3]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[1][3]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[2][3]                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[3][3]                           ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[0] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|Mux12                                        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |synthesizer_top|voice_module:u_voice2|oscillator:osc_inst|Mux0                       ;
+; 4:1                ; 60 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |synthesizer_top|voice_module:u_voice2|oscillator:osc_inst|Mux11                      ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|phase        ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|note_id[3]                                   ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr4|Selector33                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr3|Selector34                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr2|Selector32                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr1|Selector32                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                   ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                    ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                   ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                    ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                   ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                    ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                   ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                    ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: counter_module:u_counter ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; SYS_CLK_FREQ   ; 50000000 ; Signed Integer                            ;
+; SAMPLE_RATE    ; 48000    ; Signed Integer                            ;
+; AGE_RATE       ; 1000     ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                          ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                       ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                       ;
+; WIDTH_A                            ; 16                   ; Signed Integer                                                ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                                ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                                ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                       ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                       ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_B                            ; 1                    ; Untyped                                                       ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                       ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                       ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                       ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                       ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                       ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                       ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                       ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; INIT_FILE                          ; sine_wave.mif        ; Untyped                                                       ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                       ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                       ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                       ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                       ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                       ;
+; CBXI_PARAMETER                     ; altsyncram_1tf1      ; Untyped                                                       ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                          ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                       ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                       ;
+; WIDTH_A                            ; 16                   ; Signed Integer                                                ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                                ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                                ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                       ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                       ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_B                            ; 1                    ; Untyped                                                       ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                       ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                       ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                       ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                       ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                       ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                       ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                       ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; INIT_FILE                          ; sine_wave.mif        ; Untyped                                                       ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                       ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                       ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                       ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                       ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                       ;
+; CBXI_PARAMETER                     ; altsyncram_1tf1      ; Untyped                                                       ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                          ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                       ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                       ;
+; WIDTH_A                            ; 16                   ; Signed Integer                                                ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                                ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                                ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                       ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                       ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_B                            ; 1                    ; Untyped                                                       ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                       ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                       ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                       ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                       ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                       ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                       ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                       ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; INIT_FILE                          ; sine_wave.mif        ; Untyped                                                       ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                       ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                       ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                       ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                       ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                       ;
+; CBXI_PARAMETER                     ; altsyncram_1tf1      ; Untyped                                                       ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                          ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                       ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                       ;
+; WIDTH_A                            ; 16                   ; Signed Integer                                                ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                                ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                                ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                       ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                       ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_B                            ; 1                    ; Untyped                                                       ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                       ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                       ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                       ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                       ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                       ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                       ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                       ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                       ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                       ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                       ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                       ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                       ;
+; INIT_FILE                          ; sine_wave.mif        ; Untyped                                                       ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                       ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                       ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                       ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                       ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                       ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                       ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                       ;
+; CBXI_PARAMETER                     ; altsyncram_1tf1      ; Untyped                                                       ;
++------------------------------------+----------------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: iir_lowpass_filter:u_lpf ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; ALPHA_SHIFT    ; 4     ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i ;
++--------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
+; Parameter Name                       ; Value                  ; Type                                                                                            ;
++--------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
+; reference_clock_frequency            ; 50.0 MHz               ; String                                                                                          ;
+; fractional_vco_multiplier            ; true                   ; String                                                                                          ;
+; pll_type                             ; General                ; String                                                                                          ;
+; pll_subtype                          ; General                ; String                                                                                          ;
+; number_of_clocks                     ; 1                      ; Signed Integer                                                                                  ;
+; operation_mode                       ; direct                 ; String                                                                                          ;
+; deserialization_factor               ; 4                      ; Signed Integer                                                                                  ;
+; data_rate                            ; 0                      ; Signed Integer                                                                                  ;
+; sim_additional_refclk_cycles_to_lock ; 0                      ; Signed Integer                                                                                  ;
+; output_clock_frequency0              ; 12.288000 MHz          ; String                                                                                          ;
+; phase_shift0                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle0                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency1              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift1                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle1                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency2              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift2                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle2                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency3              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift3                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle3                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency4              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift4                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle4                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency5              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift5                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle5                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency6              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift6                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle6                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency7              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift7                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle7                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency8              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift8                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle8                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency9              ; 0 MHz                  ; String                                                                                          ;
+; phase_shift9                         ; 0 ps                   ; String                                                                                          ;
+; duty_cycle9                          ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency10             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift10                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle10                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency11             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift11                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle11                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency12             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift12                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle12                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency13             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift13                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle13                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency14             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift14                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle14                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency15             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift15                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle15                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency16             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift16                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle16                         ; 50                     ; Signed Integer                                                                                  ;
+; output_clock_frequency17             ; 0 MHz                  ; String                                                                                          ;
+; phase_shift17                        ; 0 ps                   ; String                                                                                          ;
+; duty_cycle17                         ; 50                     ; Signed Integer                                                                                  ;
+; clock_name_0                         ;                        ; String                                                                                          ;
+; clock_name_1                         ;                        ; String                                                                                          ;
+; clock_name_2                         ;                        ; String                                                                                          ;
+; clock_name_3                         ;                        ; String                                                                                          ;
+; clock_name_4                         ;                        ; String                                                                                          ;
+; clock_name_5                         ;                        ; String                                                                                          ;
+; clock_name_6                         ;                        ; String                                                                                          ;
+; clock_name_7                         ;                        ; String                                                                                          ;
+; clock_name_8                         ;                        ; String                                                                                          ;
+; clock_name_global_0                  ; false                  ; String                                                                                          ;
+; clock_name_global_1                  ; false                  ; String                                                                                          ;
+; clock_name_global_2                  ; false                  ; String                                                                                          ;
+; clock_name_global_3                  ; false                  ; String                                                                                          ;
+; clock_name_global_4                  ; false                  ; String                                                                                          ;
+; clock_name_global_5                  ; false                  ; String                                                                                          ;
+; clock_name_global_6                  ; false                  ; String                                                                                          ;
+; clock_name_global_7                  ; false                  ; String                                                                                          ;
+; clock_name_global_8                  ; false                  ; String                                                                                          ;
+; m_cnt_hi_div                         ; 1                      ; Signed Integer                                                                                  ;
+; m_cnt_lo_div                         ; 1                      ; Signed Integer                                                                                  ;
+; m_cnt_bypass_en                      ; false                  ; String                                                                                          ;
+; m_cnt_odd_div_duty_en                ; false                  ; String                                                                                          ;
+; n_cnt_hi_div                         ; 1                      ; Signed Integer                                                                                  ;
+; n_cnt_lo_div                         ; 1                      ; Signed Integer                                                                                  ;
+; n_cnt_bypass_en                      ; false                  ; String                                                                                          ;
+; n_cnt_odd_div_duty_en                ; false                  ; String                                                                                          ;
+; c_cnt_hi_div0                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div0                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en0                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src0                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en0               ; false                  ; String                                                                                          ;
+; c_cnt_prst0                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst0                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div1                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div1                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en1                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src1                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en1               ; false                  ; String                                                                                          ;
+; c_cnt_prst1                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst1                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div2                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div2                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en2                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src2                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en2               ; false                  ; String                                                                                          ;
+; c_cnt_prst2                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst2                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div3                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div3                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en3                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src3                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en3               ; false                  ; String                                                                                          ;
+; c_cnt_prst3                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst3                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div4                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div4                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en4                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src4                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en4               ; false                  ; String                                                                                          ;
+; c_cnt_prst4                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst4                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div5                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div5                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en5                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src5                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en5               ; false                  ; String                                                                                          ;
+; c_cnt_prst5                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst5                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div6                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div6                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en6                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src6                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en6               ; false                  ; String                                                                                          ;
+; c_cnt_prst6                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst6                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div7                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div7                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en7                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src7                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en7               ; false                  ; String                                                                                          ;
+; c_cnt_prst7                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst7                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div8                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div8                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en8                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src8                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en8               ; false                  ; String                                                                                          ;
+; c_cnt_prst8                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst8                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div9                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div9                        ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en9                     ; false                  ; String                                                                                          ;
+; c_cnt_in_src9                        ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en9               ; false                  ; String                                                                                          ;
+; c_cnt_prst9                          ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst9                   ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div10                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div10                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en10                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src10                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en10              ; false                  ; String                                                                                          ;
+; c_cnt_prst10                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst10                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div11                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div11                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en11                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src11                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en11              ; false                  ; String                                                                                          ;
+; c_cnt_prst11                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst11                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div12                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div12                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en12                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src12                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en12              ; false                  ; String                                                                                          ;
+; c_cnt_prst12                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst12                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div13                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div13                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en13                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src13                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en13              ; false                  ; String                                                                                          ;
+; c_cnt_prst13                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst13                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div14                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div14                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en14                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src14                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en14              ; false                  ; String                                                                                          ;
+; c_cnt_prst14                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst14                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div15                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div15                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en15                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src15                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en15              ; false                  ; String                                                                                          ;
+; c_cnt_prst15                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst15                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div16                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div16                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en16                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src16                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en16              ; false                  ; String                                                                                          ;
+; c_cnt_prst16                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst16                  ; 0                      ; Signed Integer                                                                                  ;
+; c_cnt_hi_div17                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_lo_div17                       ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_bypass_en17                    ; false                  ; String                                                                                          ;
+; c_cnt_in_src17                       ; ph_mux_clk             ; String                                                                                          ;
+; c_cnt_odd_div_duty_en17              ; false                  ; String                                                                                          ;
+; c_cnt_prst17                         ; 1                      ; Signed Integer                                                                                  ;
+; c_cnt_ph_mux_prst17                  ; 0                      ; Signed Integer                                                                                  ;
+; pll_vco_div                          ; 1                      ; Signed Integer                                                                                  ;
+; pll_slf_rst                          ; false                  ; String                                                                                          ;
+; pll_bw_sel                           ; low                    ; String                                                                                          ;
+; pll_output_clk_frequency             ; 0 MHz                  ; String                                                                                          ;
+; pll_cp_current                       ; 0                      ; Signed Integer                                                                                  ;
+; pll_bwctrl                           ; 0                      ; Signed Integer                                                                                  ;
+; pll_fractional_division              ; 1                      ; Signed Integer                                                                                  ;
+; pll_fractional_cout                  ; 24                     ; Signed Integer                                                                                  ;
+; pll_dsm_out_sel                      ; 1st_order              ; String                                                                                          ;
+; mimic_fbclk_type                     ; gclk                   ; String                                                                                          ;
+; pll_fbclk_mux_1                      ; glb                    ; String                                                                                          ;
+; pll_fbclk_mux_2                      ; fb_1                   ; String                                                                                          ;
+; pll_m_cnt_in_src                     ; ph_mux_clk             ; String                                                                                          ;
+; pll_vcoph_div                        ; 1                      ; Signed Integer                                                                                  ;
+; refclk1_frequency                    ; 0 MHz                  ; String                                                                                          ;
+; pll_clkin_0_src                      ; clk_0                  ; String                                                                                          ;
+; pll_clkin_1_src                      ; clk_0                  ; String                                                                                          ;
+; pll_clk_loss_sw_en                   ; false                  ; String                                                                                          ;
+; pll_auto_clk_sw_en                   ; false                  ; String                                                                                          ;
+; pll_manu_clk_sw_en                   ; false                  ; String                                                                                          ;
+; pll_clk_sw_dly                       ; 0                      ; Signed Integer                                                                                  ;
+; pll_extclk_0_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                                                                          ;
+; pll_extclk_1_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                                                                          ;
++--------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                         ;
++-------------------------------------------+------------------------------------------------------------------------------+
+; Name                                      ; Value                                                                        ;
++-------------------------------------------+------------------------------------------------------------------------------+
+; Number of entity instances                ; 4                                                                            ;
+; Entity Instance                           ; voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                          ;
+;     -- WIDTH_A                            ; 16                                                                           ;
+;     -- NUMWORDS_A                         ; 4096                                                                         ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                       ;
+;     -- WIDTH_B                            ; 1                                                                            ;
+;     -- NUMWORDS_B                         ; 1                                                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                    ;
+; Entity Instance                           ; voice_module:u_voice2|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                          ;
+;     -- WIDTH_A                            ; 16                                                                           ;
+;     -- NUMWORDS_A                         ; 4096                                                                         ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                       ;
+;     -- WIDTH_B                            ; 1                                                                            ;
+;     -- NUMWORDS_B                         ; 1                                                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                    ;
+; Entity Instance                           ; voice_module:u_voice3|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                          ;
+;     -- WIDTH_A                            ; 16                                                                           ;
+;     -- NUMWORDS_A                         ; 4096                                                                         ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                       ;
+;     -- WIDTH_B                            ; 1                                                                            ;
+;     -- NUMWORDS_B                         ; 1                                                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                    ;
+; Entity Instance                           ; voice_module:u_voice4|sine_rom:sine_rom_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                          ;
+;     -- WIDTH_A                            ; 16                                                                           ;
+;     -- NUMWORDS_A                         ; 4096                                                                         ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                       ;
+;     -- WIDTH_B                            ; 1                                                                            ;
+;     -- NUMWORDS_B                         ; 1                                                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                    ;
++-------------------------------------------+------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "counter_module:u_counter"                                                              ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; counter ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 678                         ;
+;     CLR               ; 85                          ;
+;     CLR SCLR          ; 27                          ;
+;     ENA CLR           ; 328                         ;
+;     ENA CLR SCLR      ; 197                         ;
+;     ENA CLR SLD       ; 32                          ;
+;     ENA SLD           ; 8                           ;
+;     SLD               ; 1                           ;
+; arriav_io_obuf        ; 1                           ;
+; arriav_lcell_comb     ; 1392                        ;
+;     arith             ; 649                         ;
+;         1 data inputs ; 168                         ;
+;         2 data inputs ; 481                         ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 738                         ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 177                         ;
+;         3 data inputs ; 157                         ;
+;         4 data inputs ; 96                          ;
+;         5 data inputs ; 126                         ;
+;         6 data inputs ; 175                         ;
+; arriav_mac            ; 24                          ;
+; boundary_port         ; 14                          ;
+; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 64                          ;
+;                       ;                             ;
+; Max LUT depth         ; 13.00                       ;
+; Average LUT depth     ; 3.99                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Fri May 15 16:59:51 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off synthesizer -c synthesizer
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file tb_synthesizer_top.sv
+    Info (12023): Found entity 1: tb_synthesizer_top File: C:/ELE432/synthesizer/tb_synthesizer_top.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file synthesizer_top.sv
+    Info (12023): Found entity 1: synthesizer_top File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file synthesizer_sound_interface.sv
+    Info (12023): Found entity 1: synthesizer_sound_interface File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file i2s_transmitter.sv
+    Info (12023): Found entity 1: i2s_transmitter File: C:/ELE432/synthesizer/i2s_transmitter.sv Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file i2c_config.sv
+    Info (12023): Found entity 1: i2c_config File: C:/ELE432/synthesizer/i2c_config.sv Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file ps2_receiver.sv
+    Info (12023): Found entity 1: ps2_receiver File: C:/ELE432/synthesizer/ps2_receiver.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file scan_code_to_bus.sv
+    Info (12023): Found entity 1: scan_code_to_bus File: C:/ELE432/synthesizer/scan_code_to_bus.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file voice_allocator.sv
+    Info (12023): Found entity 1: voice_allocator File: C:/ELE432/synthesizer/voice_allocator.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file voice_module.sv
+    Info (12023): Found entity 1: voice_module File: C:/ELE432/synthesizer/voice_module.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file oscillator.sv
+    Info (12023): Found entity 1: oscillator File: C:/ELE432/synthesizer/oscillator.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file adsr_envelope.sv
+    Info (12023): Found entity 1: adsr_envelope File: C:/ELE432/synthesizer/adsr_envelope.sv Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file digital_mixer.sv
+    Info (12023): Found entity 1: digital_mixer File: C:/ELE432/synthesizer/digital_mixer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file iir_lowpass_filter.sv
+    Info (12023): Found entity 1: iir_lowpass_filter File: C:/ELE432/synthesizer/iir_lowpass_filter.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file counter_module.sv
+    Info (12023): Found entity 1: counter_module File: C:/ELE432/synthesizer/counter_module.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sine_rom.v
+    Info (12023): Found entity 1: sine_rom File: C:/ELE432/synthesizer/sine_rom.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file audio_pll.v
+    Info (12023): Found entity 1: audio_pll File: C:/ELE432/synthesizer/audio_pll.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file audio_pll/audio_pll_0002.v
+    Info (12023): Found entity 1: audio_pll_0002 File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 2
+Info (12127): Elaborating entity "synthesizer_top" for the top level hierarchy
+Info (12128): Elaborating entity "counter_module" for hierarchy "counter_module:u_counter" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 85
+Info (12128): Elaborating entity "ps2_receiver" for hierarchy "ps2_receiver:u_ps2" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 100
+Info (12128): Elaborating entity "scan_code_to_bus" for hierarchy "scan_code_to_bus:u_scan" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 117
+Info (12128): Elaborating entity "voice_allocator" for hierarchy "voice_allocator:u_alloc" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 134
+Warning (10027): Verilog HDL or VHDL warning at the voice_allocator.sv(89): index expression is not wide enough to address all of the elements in the array File: C:/ELE432/synthesizer/voice_allocator.sv Line: 89
+Info (12128): Elaborating entity "voice_module" for hierarchy "voice_module:u_voice1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 148
+Info (12128): Elaborating entity "oscillator" for hierarchy "voice_module:u_voice1|oscillator:osc_inst" File: C:/ELE432/synthesizer/voice_module.sv Line: 29
+Info (12128): Elaborating entity "sine_rom" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst" File: C:/ELE432/synthesizer/voice_module.sv Line: 37
+Info (12128): Elaborating entity "altsyncram" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component" File: C:/ELE432/synthesizer/sine_rom.v Line: 82
+Info (12130): Elaborated megafunction instantiation "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component" File: C:/ELE432/synthesizer/sine_rom.v Line: 82
+Info (12133): Instantiated megafunction "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/ELE432/synthesizer/sine_rom.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "sine_wave.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "4096"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "12"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1tf1.tdf
+    Info (12023): Found entity 1: altsyncram_1tf1 File: C:/ELE432/synthesizer/db/altsyncram_1tf1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_1tf1" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "adsr_envelope" for hierarchy "adsr_envelope:u_adsr1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 179
+Info (10264): Verilog HDL Case Statement information at adsr_envelope.sv(63): all case item expressions in this case statement are onehot File: C:/ELE432/synthesizer/adsr_envelope.sv Line: 63
+Info (10264): Verilog HDL Case Statement information at adsr_envelope.sv(82): all case item expressions in this case statement are onehot File: C:/ELE432/synthesizer/adsr_envelope.sv Line: 82
+Info (12128): Elaborating entity "digital_mixer" for hierarchy "digital_mixer:u_mixer" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 216
+Info (12128): Elaborating entity "iir_lowpass_filter" for hierarchy "iir_lowpass_filter:u_lpf" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 231
+Info (12128): Elaborating entity "synthesizer_sound_interface" for hierarchy "synthesizer_sound_interface:u_audio" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 246
+Info (12128): Elaborating entity "audio_pll" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst" File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 39
+Info (12128): Elaborating entity "audio_pll_0002" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst" File: C:/ELE432/synthesizer/audio_pll.v Line: 20
+Info (12128): Elaborating entity "altera_pll" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i" File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 85
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i" File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 85
+Info (12133): Instantiated megafunction "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 85
+    Info (12134): Parameter "fractional_vco_multiplier" = "true"
+    Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
+    Info (12134): Parameter "operation_mode" = "direct"
+    Info (12134): Parameter "number_of_clocks" = "1"
+    Info (12134): Parameter "output_clock_frequency0" = "12.288000 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "0 MHz"
+    Info (12134): Parameter "phase_shift1" = "0 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "0 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "0 MHz"
+    Info (12134): Parameter "phase_shift3" = "0 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "0 MHz"
+    Info (12134): Parameter "phase_shift4" = "0 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "i2c_config" for hierarchy "synthesizer_sound_interface:u_audio|i2c_config:i2c_inst" File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 51
+Warning (10230): Verilog HDL assignment warning at i2c_config.sv(57): truncated value with size 32 to match size of target (7) File: C:/ELE432/synthesizer/i2c_config.sv Line: 57
+Warning (10230): Verilog HDL assignment warning at i2c_config.sv(171): truncated value with size 32 to match size of target (4) File: C:/ELE432/synthesizer/i2c_config.sv Line: 171
+Warning (10230): Verilog HDL assignment warning at i2c_config.sv(199): truncated value with size 32 to match size of target (2) File: C:/ELE432/synthesizer/i2c_config.sv Line: 199
+Warning (10230): Verilog HDL assignment warning at i2c_config.sv(225): truncated value with size 32 to match size of target (4) File: C:/ELE432/synthesizer/i2c_config.sv Line: 225
+Warning (10030): Net "config_rom.data_a" at i2c_config.sv(68) has no driver or initial value, using a default initial value '0' File: C:/ELE432/synthesizer/i2c_config.sv Line: 68
+Warning (10030): Net "config_rom.waddr_a" at i2c_config.sv(68) has no driver or initial value, using a default initial value '0' File: C:/ELE432/synthesizer/i2c_config.sv Line: 68
+Warning (10030): Net "config_rom.we_a" at i2c_config.sv(68) has no driver or initial value, using a default initial value '0' File: C:/ELE432/synthesizer/i2c_config.sv Line: 68
+Info (12128): Elaborating entity "i2s_transmitter" for hierarchy "synthesizer_sound_interface:u_audio|i2s_transmitter:i2s_inst" File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 66
+Warning (10036): Verilog HDL or VHDL warning at i2s_transmitter.sv(65): object "sample_latched" assigned a value but never read File: C:/ELE432/synthesizer/i2s_transmitter.sv Line: 65
+Warning (10230): Verilog HDL assignment warning at i2s_transmitter.sv(52): truncated value with size 32 to match size of target (1) File: C:/ELE432/synthesizer/i2s_transmitter.sv Line: 52
+Warning (10230): Verilog HDL assignment warning at i2s_transmitter.sv(86): truncated value with size 32 to match size of target (6) File: C:/ELE432/synthesizer/i2s_transmitter.sv Line: 86
+Warning (10230): Verilog HDL assignment warning at i2s_transmitter.sv(97): truncated value with size 32 to match size of target (6) File: C:/ELE432/synthesizer/i2s_transmitter.sv Line: 97
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom" is uninferred due to inappropriate RAM size File: C:/ELE432/synthesizer/i2c_config.sv Line: 68
+Critical Warning (127005): Memory depth (16) in the design file differs from memory depth (11) in the Memory Initialization File "C:/ELE432/synthesizer/db/synthesizer.ram0_i2c_config_4b0357c6.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/ELE432/synthesizer/db/synthesizer.ram0_i2c_config_4b0357c6.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/ELE432/synthesizer/output_files/synthesizer.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1635 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 9 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 1532 logic cells
+    Info (21064): Implemented 64 RAM segments
+    Info (21065): Implemented 1 PLLs
+    Info (21062): Implemented 24 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
+    Info: Peak virtual memory: 4899 megabytes
+    Info: Processing ended: Fri May 15 17:00:02 2026
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/ELE432/synthesizer/output_files/synthesizer.map.smsg.
+
+

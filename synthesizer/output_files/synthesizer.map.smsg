@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at synthesizer_sound_interface.sv(23): object "AUD_XCK" differs only in case from object "aud_xck" in the same scope File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 23
+Warning (10268): Verilog HDL information at iir_lowpass_filter.sv(20): always construct contains both blocking and non-blocking assignments File: C:/ELE432/synthesizer/iir_lowpass_filter.sv Line: 20

@@ -1,0 +1,41 @@
+# Reading pref.tcl
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# do synthesizer_run_msim_rtl_systemverilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Questa Altera Starter FPGA Edition-64 vmap 2025.2 Lib Mapping Utility 2025.05 May 31 2025
+# vmap work rtl_work 
+# ** Note: (vmap-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# Copying c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog  -work work +incdir+C:/ELE432/synthesizer {C:/ELE432/synthesizer/audio_pll.vo}
+# Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 15:55:45 on May 15,2026
+# vlog -reportprogress 300 -work work "+incdir+C:/ELE432/synthesizer" C:/ELE432/synthesizer/audio_pll.vo 
+# ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+# ** Error: (vlog-7) Failed to open design unit file "C:/ELE432/synthesizer/audio_pll.vo" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 15:55:45 on May 15,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: c:/altera_lite/25.1std/questa_fse/win64/vlog failed.
+# Error in macro ./synthesizer_run_msim_rtl_systemverilog.do line 8
+# c:/altera_lite/25.1std/questa_fse/win64/vlog failed.
+#     while executing
+# "vlog  -work work +incdir+C:/ELE432/synthesizer {C:/ELE432/synthesizer/audio_pll.vo}"

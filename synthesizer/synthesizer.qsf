@@ -1,0 +1,118 @@
+# ==============================================================================
+#  synthesizer_top.qsf  —  Quartus Settings File for DE1-SoC Synthesizer
+#
+#  FIX 1: Device changed from 5CGXFC7C7F23C8 (Cyclone V GX eval board)
+#          to 5CSEMA5F31C6 (DE1-SoC actual device).
+#  FIX 2: Top-level entity updated to synthesizer_top.
+#  FIX 3: Filename typo corrected: i2s_trasmitter → i2s_transmitter.
+#  FIX 4: All project source files listed.
+#  FIX 5: Pin assignments added for DE1-SoC board.
+# ==============================================================================
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY synthesizer_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 25.1STD.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Altera FPGA (SystemVerilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+
+# ------------------------------------------------------------------------------
+#  Source files
+# ------------------------------------------------------------------------------
+# Top level
+
+# Audio interface group
+
+# DSP chain
+
+# Sine ROM (Quartus megafunction — generated files, do not edit)
+
+# Audio PLL (Quartus megafunction — generated files, do not edit)
+
+# ------------------------------------------------------------------------------
+#  Pin Assignments  —  DE1-SoC (5CSEMA5F31C6)
+# ------------------------------------------------------------------------------
+
+# Clock
+set_location_assignment PIN_AF14 -to CLOCK_50
+
+# Reset (KEY[0])
+set_location_assignment PIN_AA14 -to KEY0
+
+# PS/2
+set_location_assignment PIN_AD7 -to PS2_CLK
+set_location_assignment PIN_AE7 -to PS2_DAT
+
+# WM8731 Audio Codec
+set_location_assignment PIN_G7 -to AUD_XCK
+set_location_assignment PIN_H7 -to AUD_BCLK
+set_location_assignment PIN_H8 -to AUD_DACLRCK
+set_location_assignment PIN_J7 -to AUD_DACDAT
+
+# I2C (WM8731 configuration)
+set_location_assignment PIN_J12 -to I2C_SCLK
+set_location_assignment PIN_K12 -to I2C_SDAT
+
+# LEDs (LEDR[3:0])
+set_location_assignment PIN_V16 -to LEDR[0]
+set_location_assignment PIN_W16 -to LEDR[1]
+set_location_assignment PIN_V17 -to LEDR[2]
+set_location_assignment PIN_V18 -to LEDR[3]
+
+# ------------------------------------------------------------------------------
+#  I/O Standards
+# ------------------------------------------------------------------------------
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DAT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_XCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_BCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_DACLRCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_DACDAT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to I2C_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to I2C_SDAT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
+
+# ------------------------------------------------------------------------------
+#  Partition
+# ------------------------------------------------------------------------------
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE tb_synthesizer_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE synthesizer_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE synthesizer_sound_interface.sv
+set_global_assignment -name SYSTEMVERILOG_FILE i2s_transmitter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE i2c_config.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ps2_receiver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE scan_code_to_bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE voice_allocator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE voice_module.sv
+set_global_assignment -name SYSTEMVERILOG_FILE oscillator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adsr_envelope.sv
+set_global_assignment -name SYSTEMVERILOG_FILE digital_mixer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE iir_lowpass_filter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE counter_module.sv
+set_global_assignment -name QIP_FILE sine_rom.qip
+set_global_assignment -name VERILOG_FILE sine_rom.v
+set_global_assignment -name QIP_FILE audio_pll.qip
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_synthesizer_top -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_synthesizer_top -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_synthesizer_top
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_synthesizer_top -section_id tb_synthesizer_top
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_synthesizer_top.sv -section_id tb_synthesizer_top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
