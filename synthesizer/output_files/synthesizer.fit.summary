@@ -1,12 +1,12 @@
-Fitter Status : Successful - Fri May 15 17:01:15 2026
+Fitter Status : Successful - Wed May 20 08:53:03 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : synthesizer
 Top-level Entity Name : synthesizer_top
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 863 / 32,070 ( 3 % )
-Total registers : 759
+Logic utilization (in ALMs) : 924 / 32,070 ( 3 % )
+Total registers : 779
 Total pins : 14 / 457 ( 3 % )
 Total virtual pins : 0
 Total block memory bits : 262,144 / 4,065,280 ( 6 % )

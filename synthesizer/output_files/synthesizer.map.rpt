@@ -1,5 +1,5 @@
 Analysis & Synthesis report for synthesizer
-Fri May 15 17:00:02 2026
+Wed May 20 08:51:49 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -69,13 +69,13 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri May 15 17:00:02 2026           ;
+; Analysis & Synthesis Status     ; Successful - Wed May 20 08:51:49 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; synthesizer                                     ;
 ; Top-level Entity Name           ; synthesizer_top                                 ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 678                                             ;
+; Total registers                 ; 706                                             ;
 ; Total pins                      ; 14                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 262,144                                         ;
@@ -238,16 +238,16 @@ on the Quartus Prime software download page.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 807            ;
+; Estimate of Logic utilization (ALMs needed) ; 864            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1391           ;
-;     -- 7 input functions                    ; 5              ;
-;     -- 6 input functions                    ; 175            ;
-;     -- 5 input functions                    ; 126            ;
-;     -- 4 input functions                    ; 96             ;
-;     -- <=3 input functions                  ; 989            ;
+; Combinational ALUT usage for logic          ; 1481           ;
+;     -- 7 input functions                    ; 21             ;
+;     -- 6 input functions                    ; 182            ;
+;     -- 5 input functions                    ; 139            ;
+;     -- 4 input functions                    ; 108            ;
+;     -- <=3 input functions                  ; 1031           ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 678            ;
+; Dedicated logic registers                   ; 706            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 14             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -259,9 +259,9 @@ on the Quartus Prime software download page.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 701            ;
-; Total fan-out                               ; 9015           ;
-; Average fan-out                             ; 4.12           ;
+; Maximum fan-out                             ; 729            ;
+; Total fan-out                               ; 9475           ;
+; Average fan-out                             ; 4.11           ;
 +---------------------------------------------+----------------+
 
 
@@ -270,23 +270,23 @@ on the Quartus Prime software download page.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                 ; Entity Name                 ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
-; |synthesizer_top                             ; 1391 (12)           ; 678 (9)                   ; 262144            ; 24         ; 14   ; 0            ; |synthesizer_top                                                                                                                    ; synthesizer_top             ; work         ;
-;    |adsr_envelope:u_adsr1|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr1                                                                                              ; adsr_envelope               ; work         ;
-;    |adsr_envelope:u_adsr2|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr2                                                                                              ; adsr_envelope               ; work         ;
-;    |adsr_envelope:u_adsr3|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr3                                                                                              ; adsr_envelope               ; work         ;
-;    |adsr_envelope:u_adsr4|                   ; 169 (169)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr4                                                                                              ; adsr_envelope               ; work         ;
+; |synthesizer_top                             ; 1481 (13)           ; 706 (9)                   ; 262144            ; 24         ; 14   ; 0            ; |synthesizer_top                                                                                                                    ; synthesizer_top             ; work         ;
+;    |adsr_envelope:u_adsr1|                   ; 170 (170)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr1                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr2|                   ; 170 (170)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr2                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr3|                   ; 170 (170)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr3                                                                                              ; adsr_envelope               ; work         ;
+;    |adsr_envelope:u_adsr4|                   ; 170 (170)           ; 37 (37)                   ; 0                 ; 5          ; 0    ; 0            ; |synthesizer_top|adsr_envelope:u_adsr4                                                                                              ; adsr_envelope               ; work         ;
 ;    |counter_module:u_counter|                ; 34 (34)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|counter_module:u_counter                                                                                           ; counter_module              ; work         ;
 ;    |digital_mixer:u_mixer|                   ; 52 (52)             ; 66 (66)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|digital_mixer:u_mixer                                                                                              ; digital_mixer               ; work         ;
 ;    |iir_lowpass_filter:u_lpf|                ; 63 (63)             ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|iir_lowpass_filter:u_lpf                                                                                           ; iir_lowpass_filter          ; work         ;
 ;    |ps2_receiver:u_ps2|                      ; 9 (9)               ; 27 (27)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|ps2_receiver:u_ps2                                                                                                 ; ps2_receiver                ; work         ;
-;    |scan_code_to_bus:u_scan|                 ; 29 (29)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|scan_code_to_bus:u_scan                                                                                            ; scan_code_to_bus            ; work         ;
+;    |scan_code_to_bus:u_scan|                 ; 41 (41)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|scan_code_to_bus:u_scan                                                                                            ; scan_code_to_bus            ; work         ;
 ;    |synthesizer_sound_interface:u_audio|     ; 69 (1)              ; 75 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio                                                                                ; synthesizer_sound_interface ; work         ;
 ;       |audio_pll:audio_pll_inst|             ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst                                                       ; audio_pll                   ; audio_pll    ;
 ;          |audio_pll_0002:audio_pll_inst|     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst                         ; audio_pll_0002              ; audio_pll    ;
 ;             |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i ; altera_pll                  ; work         ;
 ;       |i2c_config:i2c_inst|                  ; 57 (57)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst                                                            ; i2c_config                  ; work         ;
 ;       |i2s_transmitter:i2s_inst|             ; 11 (11)             ; 42 (42)                   ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2s_transmitter:i2s_inst                                                       ; i2s_transmitter             ; work         ;
-;    |voice_allocator:u_alloc|                 ; 255 (255)           ; 132 (132)                 ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|voice_allocator:u_alloc                                                                                            ; voice_allocator             ; work         ;
+;    |voice_allocator:u_alloc|                 ; 328 (328)           ; 151 (151)                 ; 0                 ; 0          ; 0    ; 0            ; |synthesizer_top|voice_allocator:u_alloc                                                                                            ; voice_allocator             ; work         ;
 ;    |voice_module:u_voice1|                   ; 48 (0)              ; 32 (0)                    ; 65536             ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1                                                                                              ; voice_module                ; work         ;
 ;       |oscillator:osc_inst|                  ; 48 (48)             ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|oscillator:osc_inst                                                                          ; oscillator                  ; work         ;
 ;       |sine_rom:sine_rom_inst|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |synthesizer_top|voice_module:u_voice1|sine_rom:sine_rom_inst                                                                       ; sine_rom                    ; work         ;
@@ -437,14 +437,14 @@ Encoding Type:  One-Hot
 +-------------------------------------------------------------------------+-------------------------------------------------+
 ; Register name                                                           ; Reason for Removal                              ;
 +-------------------------------------------------------------------------+-------------------------------------------------+
-; voice_allocator:u_alloc|FREQ_V1[9..14]                                  ; Merged with voice_allocator:u_alloc|FREQ_V1[15] ;
-; voice_allocator:u_alloc|FREQ_V4[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V4[10] ;
-; voice_allocator:u_alloc|FREQ_V3[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V3[10] ;
-; voice_allocator:u_alloc|FREQ_V2[9,11..15]                               ; Merged with voice_allocator:u_alloc|FREQ_V2[10] ;
+; voice_allocator:u_alloc|FREQ_V1[11..14]                                 ; Merged with voice_allocator:u_alloc|FREQ_V1[15] ;
+; voice_allocator:u_alloc|FREQ_V4[12..15]                                 ; Merged with voice_allocator:u_alloc|FREQ_V4[11] ;
+; voice_allocator:u_alloc|FREQ_V3[12..15]                                 ; Merged with voice_allocator:u_alloc|FREQ_V3[11] ;
+; voice_allocator:u_alloc|FREQ_V2[12..15]                                 ; Merged with voice_allocator:u_alloc|FREQ_V2[11] ;
 ; voice_allocator:u_alloc|FREQ_V1[15]                                     ; Stuck at GND due to stuck port data_in          ;
-; voice_allocator:u_alloc|FREQ_V2[10]                                     ; Stuck at GND due to stuck port data_in          ;
-; voice_allocator:u_alloc|FREQ_V3[10]                                     ; Stuck at GND due to stuck port data_in          ;
-; voice_allocator:u_alloc|FREQ_V4[10]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V2[11]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V3[11]                                     ; Stuck at GND due to stuck port data_in          ;
+; voice_allocator:u_alloc|FREQ_V4[11]                                     ; Stuck at GND due to stuck port data_in          ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~14        ; Lost fanout                                     ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~15        ; Lost fanout                                     ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state~16        ; Lost fanout                                     ;
@@ -634,7 +634,7 @@ Encoding Type:  One-Hot
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|config_rom~175  ; Stuck at GND due to stuck port clock            ;
 ; synthesizer_sound_interface:u_audio|i2s_transmitter:i2s_inst|bit_cnt[5] ; Stuck at GND due to stuck port data_in          ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[3]    ; Stuck at GND due to stuck port data_in          ;
-; Total Number of Removed Registers = 217                                 ;                                                 ;
+; Total Number of Removed Registers = 209                                 ;                                                 ;
 +-------------------------------------------------------------------------+-------------------------------------------------+
 
 
@@ -643,12 +643,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 678   ;
-; Number of registers using Synchronous Clear  ; 224   ;
-; Number of registers using Synchronous Load   ; 41    ;
-; Number of registers using Asynchronous Clear ; 669   ;
+; Total registers                              ; 706   ;
+; Number of registers using Synchronous Clear  ; 225   ;
+; Number of registers using Synchronous Load   ; 42    ;
+; Number of registers using Asynchronous Clear ; 697   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 565   ;
+; Number of registers using Clock Enable       ; 573   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -659,14 +659,26 @@ Encoding Type:  One-Hot
 ; Inverted Register                                                    ; Fan out ;
 +----------------------------------------------------------------------+---------+
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|i2c_sclk     ; 2       ;
-; voice_allocator:u_alloc|note_channel[0][3]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[0][2]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[1][3]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[1][2]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[2][3]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[2][2]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[3][3]                           ; 2       ;
-; voice_allocator:u_alloc|note_channel[3][2]                           ; 2       ;
+; voice_allocator:u_alloc|note_channel[0][4]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[0][3]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[0][1]                           ; 5       ;
+; voice_allocator:u_alloc|note_channel[0][0]                           ; 4       ;
+; voice_allocator:u_alloc|note_channel[0][2]                           ; 6       ;
+; voice_allocator:u_alloc|note_channel[1][4]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[1][3]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[1][1]                           ; 5       ;
+; voice_allocator:u_alloc|note_channel[1][0]                           ; 4       ;
+; voice_allocator:u_alloc|note_channel[1][2]                           ; 6       ;
+; voice_allocator:u_alloc|note_channel[2][4]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[2][3]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[2][1]                           ; 5       ;
+; voice_allocator:u_alloc|note_channel[2][0]                           ; 4       ;
+; voice_allocator:u_alloc|note_channel[2][2]                           ; 6       ;
+; voice_allocator:u_alloc|note_channel[3][4]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[3][3]                           ; 3       ;
+; voice_allocator:u_alloc|note_channel[3][1]                           ; 5       ;
+; voice_allocator:u_alloc|note_channel[3][0]                           ; 4       ;
+; voice_allocator:u_alloc|note_channel[3][2]                           ; 6       ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[2] ; 3       ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[1] ; 5       ;
 ; synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[0] ; 7       ;
@@ -677,7 +689,8 @@ Encoding Type:  One-Hot
 ; ps2_receiver:u_ps2|ps2_clk_sync[0]                                   ; 1       ;
 ; ps2_receiver:u_ps2|ps2_dat_sync[1]                                   ; 1       ;
 ; ps2_receiver:u_ps2|ps2_dat_sync[0]                                   ; 1       ;
-; Total number of inverted registers = 19                              ;         ;
+; scan_code_to_bus:u_scan|octave_shift[1]                              ; 13      ;
+; Total number of inverted registers = 32                              ;         ;
 +----------------------------------------------------------------------+---------+
 
 
@@ -686,36 +699,33 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[0][0]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[1][1]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[2][1]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[3][0]                           ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |synthesizer_top|rst_cnt[2]                                                           ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[3][9]                               ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[0][0]                               ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[1][15]                              ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[2][4]                               ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr4|envelope[20]                                   ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr3|envelope[11]                                   ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr2|envelope[19]                                   ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr1|envelope[10]                                   ;
-; 256:1              ; 2 bits    ; 340 LEs       ; 4 LEs                ; 336 LEs                ; Yes        ; |synthesizer_top|scan_code_to_bus:u_scan|waveform_select[0]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[0][3]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[1][3]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[2][3]                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[3][3]                           ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[3][11]                              ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[0][14]                              ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[1][7]                               ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_age[2][5]                               ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr4|envelope[1]                                    ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr3|envelope[15]                                   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr2|envelope[31]                                   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |synthesizer_top|adsr_envelope:u_adsr1|envelope[15]                                   ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 4 LEs                ; 336 LEs                ; Yes        ; |synthesizer_top|scan_code_to_bus:u_scan|waveform_select[1]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[0][0]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[1][0]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[2][2]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |synthesizer_top|voice_allocator:u_alloc|note_channel[3][4]                           ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|bit_index[0] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|Mux12                                        ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|Mux10                                        ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |synthesizer_top|voice_module:u_voice2|oscillator:osc_inst|Mux0                       ;
-; 4:1                ; 60 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |synthesizer_top|voice_module:u_voice2|oscillator:osc_inst|Mux11                      ;
+; 4:1                ; 60 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |synthesizer_top|voice_module:u_voice4|oscillator:osc_inst|Mux11                      ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|Mux3                                         ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|phase        ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state        ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |synthesizer_top|synthesizer_sound_interface:u_audio|i2c_config:i2c_inst|state        ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|note_id[3]                                   ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr4|Selector33                                     ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr3|Selector34                                     ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr2|Selector32                                     ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr1|Selector32                                     ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |synthesizer_top|voice_allocator:u_alloc|note_id[4]                                   ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr4|Selector35                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr3|Selector35                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr2|Selector36                                     ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 30 LEs               ; 10 LEs                 ; No         ; |synthesizer_top|adsr_envelope:u_adsr1|Selector36                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 
 
@@ -1335,35 +1345,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 678                         ;
-;     CLR               ; 85                          ;
+; arriav_ff             ; 706                         ;
+;     CLR               ; 104                         ;
 ;     CLR SCLR          ; 27                          ;
-;     ENA CLR           ; 328                         ;
+;     CLR SCLR SLD      ; 1                           ;
+;     ENA CLR           ; 336                         ;
 ;     ENA CLR SCLR      ; 197                         ;
 ;     ENA CLR SLD       ; 32                          ;
 ;     ENA SLD           ; 8                           ;
 ;     SLD               ; 1                           ;
 ; arriav_io_obuf        ; 1                           ;
-; arriav_lcell_comb     ; 1392                        ;
+; arriav_lcell_comb     ; 1482                        ;
 ;     arith             ; 649                         ;
 ;         1 data inputs ; 168                         ;
 ;         2 data inputs ; 481                         ;
-;     extend            ; 5                           ;
-;         7 data inputs ; 5                           ;
-;     normal            ; 738                         ;
+;     extend            ; 21                          ;
+;         7 data inputs ; 21                          ;
+;     normal            ; 812                         ;
+;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 177                         ;
-;         3 data inputs ; 157                         ;
-;         4 data inputs ; 96                          ;
-;         5 data inputs ; 126                         ;
-;         6 data inputs ; 175                         ;
+;         2 data inputs ; 210                         ;
+;         3 data inputs ; 165                         ;
+;         4 data inputs ; 108                         ;
+;         5 data inputs ; 139                         ;
+;         6 data inputs ; 182                         ;
 ; arriav_mac            ; 24                          ;
 ; boundary_port         ; 14                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 13.00                       ;
-; Average LUT depth     ; 3.99                        ;
+; Average LUT depth     ; 4.19                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1382,14 +1394,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Fri May 15 16:59:51 2026
+    Info: Processing started: Wed May 20 08:51:37 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off synthesizer -c synthesizer
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file tb_synthesizer_top.sv
     Info (12023): Found entity 1: tb_synthesizer_top File: C:/ELE432/synthesizer/tb_synthesizer_top.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file synthesizer_top.sv
-    Info (12023): Found entity 1: synthesizer_top File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 23
+    Info (12023): Found entity 1: synthesizer_top File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 32
 Info (12021): Found 1 design units, including 1 entities, in source file synthesizer_sound_interface.sv
     Info (12023): Found entity 1: synthesizer_sound_interface File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 14
 Info (12021): Found 1 design units, including 1 entities, in source file i2s_transmitter.sv
@@ -1421,12 +1433,12 @@ Info (12021): Found 1 design units, including 1 entities, in source file audio_p
 Info (12021): Found 1 design units, including 1 entities, in source file audio_pll/audio_pll_0002.v
     Info (12023): Found entity 1: audio_pll_0002 File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 2
 Info (12127): Elaborating entity "synthesizer_top" for the top level hierarchy
-Info (12128): Elaborating entity "counter_module" for hierarchy "counter_module:u_counter" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 85
-Info (12128): Elaborating entity "ps2_receiver" for hierarchy "ps2_receiver:u_ps2" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 100
-Info (12128): Elaborating entity "scan_code_to_bus" for hierarchy "scan_code_to_bus:u_scan" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 117
-Info (12128): Elaborating entity "voice_allocator" for hierarchy "voice_allocator:u_alloc" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 134
-Warning (10027): Verilog HDL or VHDL warning at the voice_allocator.sv(89): index expression is not wide enough to address all of the elements in the array File: C:/ELE432/synthesizer/voice_allocator.sv Line: 89
-Info (12128): Elaborating entity "voice_module" for hierarchy "voice_module:u_voice1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 148
+Info (12128): Elaborating entity "counter_module" for hierarchy "counter_module:u_counter" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 84
+Info (12128): Elaborating entity "ps2_receiver" for hierarchy "ps2_receiver:u_ps2" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 99
+Info (12128): Elaborating entity "scan_code_to_bus" for hierarchy "scan_code_to_bus:u_scan" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 118
+Info (12128): Elaborating entity "voice_allocator" for hierarchy "voice_allocator:u_alloc" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 136
+Warning (10027): Verilog HDL or VHDL warning at the voice_allocator.sv(132): index expression is not wide enough to address all of the elements in the array File: C:/ELE432/synthesizer/voice_allocator.sv Line: 132
+Info (12128): Elaborating entity "voice_module" for hierarchy "voice_module:u_voice1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 150
 Info (12128): Elaborating entity "oscillator" for hierarchy "voice_module:u_voice1|oscillator:osc_inst" File: C:/ELE432/synthesizer/voice_module.sv Line: 29
 Info (12128): Elaborating entity "sine_rom" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst" File: C:/ELE432/synthesizer/voice_module.sv Line: 37
 Info (12128): Elaborating entity "altsyncram" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component" File: C:/ELE432/synthesizer/sine_rom.v Line: 82
@@ -1449,12 +1461,12 @@ Info (12133): Instantiated megafunction "voice_module:u_voice1|sine_rom:sine_rom
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1tf1.tdf
     Info (12023): Found entity 1: altsyncram_1tf1 File: C:/ELE432/synthesizer/db/altsyncram_1tf1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_1tf1" for hierarchy "voice_module:u_voice1|sine_rom:sine_rom_inst|altsyncram:altsyncram_component|altsyncram_1tf1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "adsr_envelope" for hierarchy "adsr_envelope:u_adsr1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 179
+Info (12128): Elaborating entity "adsr_envelope" for hierarchy "adsr_envelope:u_adsr1" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 181
 Info (10264): Verilog HDL Case Statement information at adsr_envelope.sv(63): all case item expressions in this case statement are onehot File: C:/ELE432/synthesizer/adsr_envelope.sv Line: 63
 Info (10264): Verilog HDL Case Statement information at adsr_envelope.sv(82): all case item expressions in this case statement are onehot File: C:/ELE432/synthesizer/adsr_envelope.sv Line: 82
-Info (12128): Elaborating entity "digital_mixer" for hierarchy "digital_mixer:u_mixer" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 216
-Info (12128): Elaborating entity "iir_lowpass_filter" for hierarchy "iir_lowpass_filter:u_lpf" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 231
-Info (12128): Elaborating entity "synthesizer_sound_interface" for hierarchy "synthesizer_sound_interface:u_audio" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 246
+Info (12128): Elaborating entity "digital_mixer" for hierarchy "digital_mixer:u_mixer" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 218
+Info (12128): Elaborating entity "iir_lowpass_filter" for hierarchy "iir_lowpass_filter:u_lpf" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 233
+Info (12128): Elaborating entity "synthesizer_sound_interface" for hierarchy "synthesizer_sound_interface:u_audio" File: C:/ELE432/synthesizer/synthesizer_top.sv Line: 248
 Info (12128): Elaborating entity "audio_pll" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst" File: C:/ELE432/synthesizer/synthesizer_sound_interface.sv Line: 39
 Info (12128): Elaborating entity "audio_pll_0002" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst" File: C:/ELE432/synthesizer/audio_pll.v Line: 20
 Info (12128): Elaborating entity "altera_pll" for hierarchy "synthesizer_sound_interface:u_audio|audio_pll:audio_pll_inst|audio_pll_0002:audio_pll_inst|altera_pll:altera_pll_i" File: C:/ELE432/synthesizer/audio_pll/audio_pll_0002.v Line: 85
@@ -1543,19 +1555,19 @@ Info (17049): 11 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/ELE432/synthesizer/output_files/synthesizer.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1635 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1740 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 9 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 1532 logic cells
+    Info (21061): Implemented 1637 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 24 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 4899 megabytes
-    Info: Processing ended: Fri May 15 17:00:02 2026
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Peak virtual memory: 4909 megabytes
+    Info: Processing ended: Wed May 20 08:51:49 2026
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:21
 
 
 +------------------------------------------+

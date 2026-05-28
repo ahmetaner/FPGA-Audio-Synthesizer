@@ -4,7 +4,8 @@
 //  Signal chain:
 //    PS/2 Keyboard
 //      → ps2_receiver          (raw 8-bit scan codes)
-//      → scan_code_to_bus      (key_state_bus[11:0], waveform_select, soft_reset)
+//      → scan_code_to_bus      (key_state_bus[18:0], waveform_select,
+//                               octave_shift[1:0], soft_reset)
 //      → voice_allocator       (4× FREQ[15:0] + GATE per voice)
 //      → 4× voice_module       (oscillator + sine ROM → RAW_SOUND per voice)
 //      → 4× adsr_envelope      (per-voice ADSR shaping)
@@ -15,40 +16,38 @@
 //            ├─ i2c_config     (WM8731 register initialisation)
 //            └─ i2s_transmitter(serial audio → AUD_BCLK/LRCLK/DACDAT)
 //
+//  Klavye Haritası (Türkçe F fiziksel tuş konumları):
+//    Beyaz : F G Ğ I O D R N H P Q  → C D E F G A B C' D' E' F'
+//    Siyah : 2 3 5 6 7 9 0 -        → C# D# F# G# A# C#' D#' F#'
+//    Oktav : F5 = bir oktav aşağı   F6 = bir oktav yukarı
+//            Aralık: C2 (min) ↔ C5 (max başlangıç), varsayılan C4
+//    Waveform: F1=Sine F2=Square F3=Triangle F4=Sawtooth
+//    Reset : ESC
+//
 //  Target device : Cyclone V  5CSEMA5F31C6  (DE1-SoC)
 //  System clock  : 50 MHz (CLOCK_50)
 //  Sample rate   : 48 kHz
 // =============================================================================
 
 module synthesizer_top (
-    // ── Clocks ───────────────────────────────────────────────────────────────
     input  logic        CLOCK_50,
-
-    // ── Reset: KEY[0] on DE1-SoC is active-low ───────────────────────────────
     input  logic        KEY0,
-
-    // ── PS/2 Keyboard ────────────────────────────────────────────────────────
     input  logic        PS2_CLK,
     input  logic        PS2_DAT,
 
-    // ── WM8731 Audio Codec ───────────────────────────────────────────────────
-    output logic        AUD_XCK,      // 12.288 MHz MCLK (from PLL)
-    output logic        AUD_BCLK,     // Bit clock  (~3.072 MHz derived in I2S TX)
-    output logic        AUD_DACLRCK,  // LR clock   (48 kHz)
-    output logic        AUD_DACDAT,   // Serial audio data
+    output logic        AUD_XCK,
+    output logic        AUD_BCLK,
+    output logic        AUD_DACLRCK,
+    output logic        AUD_DACDAT,
 
-    // ── I2C for WM8731 configuration ─────────────────────────────────────────
     output logic        I2C_SCLK,
     inout  wire         I2C_SDAT,
 
-    // ── Status LEDs (LEDR[3:0]) — one per active voice ───────────────────────
     output logic [3:0]  LEDR
 );
 
     // =========================================================================
     //  0.  Reset
-    //      KEY0 is active-low.  Stretch reset for 256 cycles so downstream
-    //      registers see a clean pulse even if KEY0 bounces.
     // =========================================================================
     logic rst;
     logic [7:0] rst_cnt;
@@ -66,7 +65,7 @@ module synthesizer_top (
     end
 
     // =========================================================================
-    //  1.  Sample-rate timing:  48 kHz sample_enable  +  1 kHz age_enable
+    //  1.  Sample-rate timing
     // =========================================================================
     logic        sample_enable;
     logic        age_enable;
@@ -88,7 +87,7 @@ module synthesizer_top (
     //  2.  PS/2 Keyboard Receiver
     // =========================================================================
     logic [7:0] rx_data;
-    logic        rx_valid;
+    logic       rx_valid;
 
     ps2_receiver u_ps2 (
         .clk_50mhz(CLOCK_50),
@@ -102,8 +101,9 @@ module synthesizer_top (
     // =========================================================================
     //  3.  Scan-code → Key State Bus
     // =========================================================================
-    logic [11:0] key_state_bus;
+    logic [18:0] key_state_bus;
     logic [1:0]  waveform_select;
+    logic [1:0]  octave_shift;     // 0=C2 baz … 3=C5 baz, başlangıç=2(C4)
     logic        soft_reset;
 
     scan_code_to_bus u_scan (
@@ -113,11 +113,12 @@ module synthesizer_top (
         .rx_valid       (rx_valid),
         .key_state_bus  (key_state_bus),
         .waveform_select(waveform_select),
+        .octave_shift   (octave_shift),
         .soft_reset     (soft_reset)
     );
 
     // =========================================================================
-    //  4.  Voice Allocator  —  4-voice polyphony with note stealing & ageing
+    //  4.  Voice Allocator
     // =========================================================================
     logic [15:0] freq_v1, freq_v2, freq_v3, freq_v4;
     logic        gate_v1, gate_v2, gate_v3, gate_v4;
@@ -127,6 +128,7 @@ module synthesizer_top (
         .RST          (rst),
         .BTN_STATE_BUS(key_state_bus),
         .AGE_ENABLE   (age_enable),
+        .OCTAVE_SHIFT (octave_shift),
         .FREQ_V1(freq_v1), .FREQ_V2(freq_v2),
         .FREQ_V3(freq_v3), .FREQ_V4(freq_v4),
         .GATE_V1(gate_v1), .GATE_V2(gate_v2),
@@ -136,7 +138,7 @@ module synthesizer_top (
     assign LEDR = {gate_v4, gate_v3, gate_v2, gate_v1};
 
     // =========================================================================
-    //  5.  Voice Modules  —  oscillator + sine ROM, one per voice
+    //  5.  Voice Modules
     // =========================================================================
     logic signed [15:0] raw_v1, raw_v2, raw_v3, raw_v4;
 
@@ -166,37 +168,37 @@ module synthesizer_top (
     );
 
     // =========================================================================
-    //  6.  ADSR Envelopes  —  one instance per voice
+    //  6.  ADSR Envelopes
     // =========================================================================
     logic signed [15:0] shaped_v1, shaped_v2, shaped_v3, shaped_v4;
 
     adsr_envelope u_adsr1 (
-        .clk         (CLOCK_50), .rst(rst),
-        .gate_v1     (gate_v1),
+        .clk          (CLOCK_50), .rst(rst),
+        .gate_v1      (gate_v1),
         .sample_enable(sample_enable),
-        .mixed_sound (raw_v1),
-        .shaped_sound(shaped_v1)
+        .mixed_sound  (raw_v1),
+        .shaped_sound (shaped_v1)
     );
     adsr_envelope u_adsr2 (
-        .clk         (CLOCK_50), .rst(rst),
-        .gate_v1     (gate_v2),
+        .clk          (CLOCK_50), .rst(rst),
+        .gate_v1      (gate_v2),
         .sample_enable(sample_enable),
-        .mixed_sound (raw_v2),
-        .shaped_sound(shaped_v2)
+        .mixed_sound  (raw_v2),
+        .shaped_sound (shaped_v2)
     );
     adsr_envelope u_adsr3 (
-        .clk         (CLOCK_50), .rst(rst),
-        .gate_v1     (gate_v3),
+        .clk          (CLOCK_50), .rst(rst),
+        .gate_v1      (gate_v3),
         .sample_enable(sample_enable),
-        .mixed_sound (raw_v3),
-        .shaped_sound(shaped_v3)
+        .mixed_sound  (raw_v3),
+        .shaped_sound (shaped_v3)
     );
     adsr_envelope u_adsr4 (
-        .clk         (CLOCK_50), .rst(rst),
-        .gate_v1     (gate_v4),
+        .clk          (CLOCK_50), .rst(rst),
+        .gate_v1      (gate_v4),
         .sample_enable(sample_enable),
-        .mixed_sound (raw_v4),
-        .shaped_sound(shaped_v4)
+        .mixed_sound  (raw_v4),
+        .shaped_sound (shaped_v4)
     );
 
     // =========================================================================
@@ -231,7 +233,7 @@ module synthesizer_top (
     );
 
     // =========================================================================
-    //  9.  Audio Interface  —  PLL + I2C config + I2S transmitter
+    //  9.  Audio Interface
     // =========================================================================
     synthesizer_sound_interface u_audio (
         .CLOCK_50      (CLOCK_50),
